@@ -1,0 +1,155 @@
+
+调用winAPI
+http://blog.csdn.net/wanbinwb2012/article/details/11640541
+
+/*********************************************************************************************************************************************************************************
+反射和托管
+[非托管的用 DllImport 引入， Assembly是托管dll ]
+使用反射时，dll只能托管代码（C++也可以生成托管dll）
+非托管的使用[DllImport]引入
+
+
+托管dll和非托管dll
+
+
+
+*********************************************************************************************************************************************************************************/
+
+
+/*********************************************************************************************************************************************************************************
+ C# api 动态加载Ｃ＋＋的ＤＬＬ函数方法 
+（参考：http://blog.csdn.net/adsdassadfasdfasdf/article/details/5805988）
+1〉〉〉
+//Ｃ＋＋函数如下：
+// testdll3.cpp : Defines the entry point for the DLL application.
+//
+
+#include "stdafx.h"
+
+BOOL APIENTRY DllMain( HANDLE hModule, 
+                       DWORD ul_reason_for_call, 
+                       LPVOID lpReserved
+      )
+{
+    return TRUE;
+}
+
+
+extern "C" __declspec(dllexport) int add(int * a,int * b)
+{
+return *a + *b;
+}
+
+
+2〉〉〉
+Ｃ＃中动态加载方法：
+
+首先写一个加载ＤＬＬ文件的类：
+
+  #region Win API 声明
+    class LoadDllAPI
+    {
+
+        [DllImport("kernel32.dll")]
+        public extern static IntPtr LoadLibrary(string path);
+
+        [DllImport("kernel32.dll")]
+        public extern static IntPtr GetProcAddress(IntPtr lib, string funcName);
+
+        [DllImport("kernel32.dll")]
+        public extern static bool FreeLibrary(IntPtr lib);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr GetStdHandle(int nStdHandle);
+
+        [DllImport("user32", EntryPoint = "CallWindowProc")]
+        public static extern int CallWindowProc(IntPtr lpPrevWndFunc, int hwnd, int MSG, int wParam, int lParam);
+    }
+    #endregion
+
+    public class LoadDll
+    {
+        IntPtr DllLib;//DLL文件名柄     
+        #region 构造函数
+        public LoadDll()
+        { }
+        public LoadDll(string dllpath)
+        {
+            DllLib = LoadDllAPI.LoadLibrary(dllpath);
+        }
+        #endregion
+        /// <summary>     
+        /// 析构函数     
+        /// </summary>     
+        ~LoadDll()
+        {
+            LoadDllAPI.FreeLibrary(DllLib);//释放名柄     
+        }
+        public void initPath(string dllpath)
+        {
+            if (DllLib == IntPtr.Zero)
+            {
+                DllLib = LoadDllAPI.LoadLibrary(dllpath);
+            }
+        }
+        /// <summary>     
+        /// 获取ＤＬＬ中一个方法的委托     
+        /// </summary>     
+        /// <param name="methodname"></param>     
+        /// <param name="methodtype"></param>     
+        /// <returns></returns>     
+        public Delegate InvokeMethod(string methodname, Type methodtype)
+        {
+            IntPtr MethodPtr = LoadDllAPI.GetProcAddress(DllLib, methodname);
+
+            return (Delegate)Marshal.GetDelegateForFunctionPointer(MethodPtr, methodtype);
+        }
+    }     
+
+
+
+3〉〉〉
+C#调用
+  	LoadDll loaddll = new LoadDll();//实例化加载ＤＬＬ文件的类，，如上     
+        public delegate int delegateadd(ref double ptv, double P);//声明此方法的一个委托  
+        
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+            loaddll.initPath(@"D:\Excel\ZhengLenQi.dll");//载入文件[调用的dll和例子中的dll不一样]     
+            delegateadd m = (delegateadd)loaddll.InvokeMethod("dll_ifcshuip", typeof(delegateadd));//获取其中方法的委托     
+            double[] ptv = new double[8];
+            double p = 2.5;
+           int re = m(ref ptv[0] , p);//得到ＲＥ＝**，，成功     
+           MessageBox.Show(ptv[3] + "---", "Han", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+
+
+
+
+
+
+*********************************************************************************************************************************************************************************/
+
+
+
+
+
+
+/*********************************************************************************************************************************************************************************
+动态加载资源文件（资源文件的属性"生成操作"为：'嵌入的资源'）
+Assembly assembly = GetType().Assembly;
+System.IO.Stream streamSmall = assembly.GetManifestResourceStream("WindowsFormsApplication1.event.jpg"); 
+//当作为一个资源被嵌入后，资源的完搜索整名称会由项目的默认命名空间与文件名组成
+Bitmap BackgroundImg = new Bitmap(streamSmall);
+pictureBox1.Image = BackgroundImg;
+
+Assembly assembly = GetType().Assembly;
+System.IO.Stream streamSmall = assembly.GetManifestResourceStream("WindowsFormsApplication1.NewFolder1.TextFile1.txt");
+StreamReader sr = new StreamReader(streamSmall);
+string text = sr.ReadToEnd();
+MessageBox.Show(text);
+
+
+*********************************************************************************************************************************************************************************/
