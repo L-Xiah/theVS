@@ -1,0 +1,409 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>SIEMENS PG properties of water and steam: H2O32Bit</title>
+<style type="text/css">
+<!--
+p{font-family:Arial;font-size:10pt;margin-bottom:0pt;margin-top:0pt; }
+p.kopf{font-size:12pt; color:mediumblue; }
+p.info{font-size:11pt;color:dimgray; }
+p.disclaim{font-size:12pt;color:red; }
+p.contact{font-size:9pt; }
+p.siemens{font-size:12pt;color:mediumturquoise; }
+p.cellText{padding-left:2mm; }
+p.gross{font-size:14pt; }
+p.funktion{font-family:Arial;font-size:10pt;margin-bottom:0pt;margin-top:0pt;color:darkblue; }
+p.debugLog{font-size:8pt; color:darkblue; }
+tt{font-size:8pt; }
+pre{font-size:9pt;margin-top:0pt;margin-bottom:0pt; }
+ul{margin-top:0pt;margin-bottom:0pt; }
+ol{margin-top:0pt;margin-bottom:0pt; }
+li{font-family:Arial;font-size:10pt; }
+//-->
+</style>
+</head>
+<body>
+<table border=0 cellspacing=0 width="100%">
+	<tr>
+		<td height=60 valign=top><p class="gross"><a href="http://www.pg.erl.siemens.de/f/w7/w71/Wadata/index.htm">IAPWS-IF97 Properties of water and steam</a><br>interface H2O32Bit for internal use</p></td>
+		<td align=right valign=top><p class="siemens"><b>SIEMENS</b> <b>P</b>ower <b>G</b>eneration</p></td>
+	</tr>
+	<tr>
+		<td colspan=2 bgcolor=beige><p class="disclaim">Any use <b>outside</b> Siemens Power Generation is a violation of our license
+			agreement with the Ruhr-Universität Bochum.
+			Please contact us directly if you wish to use IAPWS-IF97 outside Siemens PG.</p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2><p class="info">
+			Packages for properties of water and steam <a href="http://www.pg.erl.siemens.de/f/w7/w71/Wadata/download.htm">(download area)</a> are free of charge within Siemens PG.
+			<b>Please register</b> yourself with a mail to
+			<a href="mailto:properties@erl11.siemens.de">properties@erl11.siemens.de</a> including
+			full name, phone number, package name and your e-mail address or use our <a href="http://www-it3.pg.erl.siemens.de/w7/wadata/html/registration.htm">registration form</a>. This enables us to keep you
+			up to date with bugfixes and information about new packages.
+			This service is <b>for free!</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<hr>
+			<table border=0 width="100%">
+				<tr>
+					<td width="50%" align=center><p class="info">development and maintainance</p></td>
+					<td width="50%" align=center><p class="info">IAPWS background information</p></td>
+				</tr>
+				<tr>
+					<td width="50%" align=center><p class="info"><a href="http://scd.siemens.de/db4/lookUp?scdid=AA20221621444022">Stefan Bennoit</a></p></td>
+					<td width="50%" align=center><p class="info"><a href="http://scd.siemens.de/db4/lookUp?scdid=R241000017409">Ingo Weber</a></p></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<hr noshade color=red size=2>
+<p class="gross">Package: H2O32BitExcel</p>
+<hr noshade color=red size=2>
+<p>(replaces H2o32BitExcel7, H2o32BitExcel8 and H2o32BitBUSExcel8)</p>
+<p> This package enables you to use functions for properties of water and steam
+inside Microsoft Excel Version '97 and '2000. Some function have the possibility
+to use the old IFC67 properties with a switch variable (optional argument).<br>
+Unit sytems available inside (mixing possible):</p>
+<ul>
+	<li>SI with [bar] and [°C]</li>
+	<li>British thermal units</li>
+</ul>
+<p>For the units used please take the Excel function assistant. Argument and result unit is printed there.</p>
+<br>
+<p class="kopf">Benefits of this package in comparison to the older ones are:</p>
+
+<ul compact>
+	<li>Using "xll" instead of "xla". This is much faster since the properties are
+		now build-in functions instead of Visual Basic code.</li>
+	<li>No more annoying messages with missing links to the add-in when sharing xls
+		files with colleagues. Excel does no longer add property file name to
+		property function name when saving your files.</li>
+	<li>No more adding links to Excel Basic when using property functions in your
+		own code. Just use it:<br>value = <b>Application.Run("hVon_p_t", press, temp)</b></li>
+</ul>
+<hr>
+<p class="kopf">Package content:</p>
+<table border=0>
+	<tr>
+		<td valign=top><p>H2o32BitExcel.html</p>
+		<td><p>&#160;&#160;&#160;</p></td>
+		<td><p>Information about installation, disclaimer (this file)</p></td>
+	</tr>
+	<tr>
+		<td valign=top><p>H2o32BitExcel.xll</p>
+		<td><p>&#160;&#160;&#160;</p></td>
+		<td><p>Add-In for Excel</p></td>
+	</tr>
+	<tr>
+		<td valign=top><p>H2o32Bit.dll</p>
+		<td><p>&#160;&#160;&#160;</p></td>
+		<td><p>The calculation functions behind</p></td>
+	</tr>
+	<tr>
+		<td valign=top><p>H2o32Bit_ifc67.dll</p>
+		<td><p>&#160;&#160;&#160;</p></td>
+		<td><p>The old IFC67 functions.</p></td>
+	</tr>
+</table>
+<hr>
+<p class="kopf">Installation:</p>
+<ol>
+	<li>If you have previous version of the Excel water steam properties installed,
+		delete them from your hard disk. Open Excel. Excel will recognize the Add-In
+		is no longer available. Go to the Add-In-Manager (Extras->Add-In Manager)
+		and remove H2O32Bit* from the list. <b>Important:</b> Close Excel after this!</li>
+	<li>Copy all the files from this package to a directoy you like.</li>
+	<li>Open Excel again and open the Add-In-Manager. Press find and move to the
+		directory you have copied the file to. Select H2o32BitExcel.xll and press OK
+		to let Excel open the file. In the list of available packages you will find
+		"H2o32BitExcel".</li>
+	<li>Installation is now complete. Have a look at the function assistant.<br>
+		You will find 2 new categories with function within:<br>
+										"properties water steam SI" and<br>
+										"properties water steam BTU"</li>
+	<li>If you have Excel (*.xls) files with water and steam property call from
+		earlier packages:<br>
+						When you open such a file Excel will say that it is linked
+						to files that are not available.
+						Just delete the file and path name in front of the each water
+						steam function used in your spreadsheet and save your file.
+						This is a one time task and will never occur again with this file.</li>
+</ol>
+<hr>
+<p class="kopf">Version History:</p>
+<pre>
+2003-11-25
+    xll(2003-11-25)->C++(2003-10-16)->H2O32Bit(2003-02-28)->IAPWS-IF97(2003-02-27)
+        * Changes in the Excel-Interface
+            * Functions gibTafelArt/getTableVersion now have the optional argument "useNewFormulation"
+
+2003-10-16
+    xll(2003-09-11)->C++(2003-10-16)->H2O32Bit(2003-02-28)->IAPWS-IF97(2003-02-27)
+        * Changes in the DLL H2o32Bit.dll
+            * Changed mechanism for extrapolating results if "H2o32BitDoArgValidation(1)" used
+
+2003-09-11
+    xll(2003-09-11)->C++(2003-01-03)->H2O32Bit(2003-02-28)->IAPWS-IF97(2003-02-27)
+        * corrected function pSattBy_p
+        * Changes in the DLL H2o32Bit.dll
+            * New file if97-bo.for from the Ruhr-Universität Bochum
+            * Deleted unused variables in FORTRAN interface
+            * Valid range validation detection enhanced
+
+2003-02-05
+    xll(2003-02-05)->C++(2003-01-03)->H2O32Bit(2003-01-03)->IAPWS-IF97(2001-05-21)
+    * First release of H2o32BitExcel as substitute for all earlyer versions
+    * Changes in the DLL H2o32Bit.dll
+        *  Handling of NAN arguments (not a number) in FORTRAN and C++ part
+        *  In the FORTRAN part compiler optimizing is switched to local
+        *  In the C++ part compiler optimizing is switched off
+        *  Changes in the argument validation routine for density. Lower border adjusted.
+2002-09-06
+    First release of package H2o32BitExcel8BUS
+2001-05-21
+    Last release of packages H2o32BitExcel7 and H2o32BitExcel8
+</pre>
+<hr>
+<p class="kopf">Available functions:</p>
+<p>Functions names are build up from the symbols names.<br>
+<i>Von</i> can be translated as "as a function of"<br>
+<i>Satt</i> can be translated as "saturation state"<br>
+<i>1s</i> means saturated liquid state, <i>2s</i> means saturated vapour state<br>
+Example: Temperature (t) as function of pressure (p) and enthalpy (h) <b>tVon_p_h</b>(pressure,enthalpy)</p>
+<br>
+<p>Functions marked with <b>(##)</b> have an <b>optional boolean</b> argument <b>UseIF97</b>.
+The default is true(using IAPWS-IF97). When you specify false the IFC67 calculation is taken.</b>
+<p class="funktion">isobaric "Volumenausdehnungskoeffizient"</p>
+<pre>
+    function in SI units           function in BTU
+      alphaVon_p_t                  
+</pre><p class="funktion">isochoric tension</p>
+<pre>
+    function in SI units           function in BTU
+      betaVon_p_t                   
+</pre>
+<p class="funktion">specific isobaric heat capacity</p>
+<pre>
+    function in SI units           function in BTU
+      cp1sVon_p                      cp1sBy_p                 
+      cp1sVon_t                      cp1sBy_t                 
+      cp2sVon_p                      cp2sBy_p                 
+      cp2sVon_t                      cp2sBy_t                 
+      cpVon_p_h                      cpBy_p_h                 
+      cpVon_p_s                      cpBy_p_s                 
+      cpVon_p_t                      cpBy_p_t                 
+      cpVon_p_v                      cpBy_p_v                 
+</pre>
+<p class="funktion">specific isochoric heat capacity</p>
+<pre>
+    function in SI units           function in BTU
+      cvVon_p_t                      cvBy_p_t                 
+</pre>
+<p class="funktion">derivatives</p>
+<pre>
+    function in SI units           function in BTU
+      drhodhVon_p_h                 
+      drhodhVon_p_t                 
+      drhodpVon_p_h                 
+      drhodpVon_p_t                 
+      dvdhVon_p_h                   
+      dvdhVon_p_t                   
+      dvdpVon_p_h                   
+      dvdpVon_p_t                   
+</pre>
+<p class="funktion">relative static dielelectric constant</p>
+<pre>
+    function in SI units           function in BTU
+      epsilonVon_p_t                 epsilonBy_p_t            
+</pre>
+<p class="funktion">specific entropy</p>
+<pre>
+    function in SI units           function in BTU
+      es1sVon_p                      es1sBy_p                 
+      es1sVon_t                      es1sBy_t                 
+      es2sVon_p                      es2sBy_p                 
+      es2sVon_t                      es2sBy_t                 
+</pre>
+<p class="funktion">dynamic viscosity</p>
+<pre>
+      eta1sVon_p (##)                eta1sBy_p (##)           
+      eta2sVon_p (##)                eta2sBy_p (##)           
+      etaVon_p_t                     etaBy_p_t                
+      etaVon_t_v (##)                etaBy_t_v (##)           
+</pre>
+<p class="funktion">fugacity</p>
+<pre>
+    function in SI units           function in BTU
+      fugVon_p_t                    
+</pre>
+<p class="funktion">specific Hemholtz free energy</p>
+<pre>
+    function in SI units           function in BTU
+      fVon_p_t                       fBy_p_t                  
+</pre>
+<p class="funktion">isothermic compress. coeff</p>
+<pre>
+    function in SI units           function in BTU
+      gammaVon_p_t                  
+</pre>
+<p class="funktion">print the author of this stuff</p>
+<pre>
+    function in SI units           function in BTU
+      gibH2OKontakt (##)             getH2OAuthor (##)
+</pre>
+<p class="funktion">critical point </p>
+<pre>
+    function in SI units           function in BTU
+      gibH2OKritischerDruck          getH2OCriticalPressure   
+      gibH2OKritischeTemperatur      getH2OCriticalTemperature
+</pre>
+<p class="funktion">tripel point</p>
+<pre>
+    function in SI units           function in BTU
+      gibH2OTripelDruck              getH2OTriplePressure     
+      gibH2OTripelTemperatur         getH2OTripleTemperature  
+</pre>
+<p class="funktion">version information</p>
+<pre>
+    function in SI units           function in BTU
+      gibTafelArt (##)               getTableVersion (##)
+</pre>
+<p class="funktion">specific Gibbs free energy</p>
+<pre>
+    function in SI units           function in BTU
+      gVon_p_t                       gBy_p_t                  
+</pre>
+<p class="funktion">specific enthalpy</p>
+<pre>
+    function in SI units           function in BTU
+      h1sVon_p (##)                  h1sBy_p (##)             
+      h1sVon_t                       h1sBy_t                  
+      h1Von_p_t                      h1By_p_t                 
+      h2sVon_p (##)                  h2sBy_p (##)             
+      h2sVon_t                       h2sBy_t                  
+      h2Von_p_t                      h2By_p_t                 
+      hVon_p_s (##)                  hBy_p_s (##)             
+      hVon_p_t (##)                  hBy_p_t (##)             
+      hVon_p_v                       hBy_p_v                  
+      hVon_p_x                       hBy_p_x                  
+      hVon_t_x                       hBy_t_x                  
+</pre>
+<p class="funktion">isentropic exponent</p>
+<pre>
+    function in SI units           function in BTU
+      kappaVon_p_h                   kappaBy_p_h              
+      kappaVon_p_t                   kappaBy_p_t              
+</pre>
+<p class="funktion">thermal conductivity</p>
+<pre>
+    function in SI units           function in BTU
+      lambda1sVon_p (##)             lambda1sBy_p (##)        
+      lambda2sVon_p (##)             lambda2sBy_p (##)        
+      lambdaVon_p_t                  lambdaBy_p_t             
+      lambdaVon_t_v (##)             lambdaBy_t_v (##)        
+</pre>
+<p class="funktion">refractive index</p>
+<pre>
+    function in SI units           function in BTU
+      nVon_p_t_lambda                nBy_p_t_lambda           
+</pre>
+<p class="funktion">kinematic viscosity</p>
+<pre>
+    function in SI units           function in BTU
+      nyVon_p_t                     
+</pre>
+<p class="funktion">Prandtl number</p>
+<pre>
+    function in SI units           function in BTU
+      pr1sVon_p                      pr1sBy_p                 
+      pr2sVon_p                      pr2sBy_p                 
+      prVon_p_t (##)                 prBy_p_t (##)            
+</pre>
+<p class="funktion">pressure</p>
+<pre>
+    function in SI units           function in BTU
+      pSattVon_t (##)                pSattBy_t (##)           
+      pVon_h_s                       pBy_h_s                  
+      pVon_rho_h                     pBy_rho_h                
+      pVon_s1s                       pBy_s1s                  
+      pVon_s2s                       pBy_s2s                  
+      pVon_t_h                       pBy_t_h                  
+      pVon_t_s                       pBy_t_s                  
+      pVon_t_v                       pBy_t_v                  
+      pVon_v_h                       pBy_v_h                  
+      pVon_v_s                       pBy_v_s                  
+</pre>
+<p class="funktion">density</p>
+<pre>
+    function in SI units           function in BTU
+      rho1sVon_p (##)                rho1sBy_p (##)           
+      rho2sVon_p (##)                rho2sBy_p (##)           
+      rhoVon_p_h (##)                rhoBy_p_h (##)           
+      rhoVon_p_t                     rhoBy_p_t                
+</pre>
+<p class="funktion">surface tension</p>
+<pre>
+    function in SI units           function in BTU
+      sigmaVon_p_t (##)             
+</pre>
+<p class="funktion">specific entropy</p>
+<pre>
+    function in SI units           function in BTU
+      sVon_p_h (##)                  sBy_p_h (##)             
+      sVon_p_t                       sBy_p_t                  
+      sVon_p_v                       sBy_p_v                  
+      sVon_p_x                       sBy_p_x                  
+      sVon_t_x                       sBy_t_x                  
+</pre>
+<p class="funktion">temperature</p>
+<pre>
+    function in SI units           function in BTU
+      tSattVon_p (##)                tSattBy_p (##)           
+      tVon_p_h (##)                  tBy_p_h (##)
+      tVon_p_s                       tBy_p_s                  
+      tVon_p_v                       tBy_p_v                  
+</pre>
+<p class="funktion">specific internal energy</p>
+<pre>
+    function in SI units           function in BTU
+      uVon_p_t                       uBy_p_t                  
+</pre>
+<p class="funktion">specific volume</p>
+<pre>
+    function in SI units           function in BTU
+      v1sVon_p                       v1sBy_p                  
+      v1sVon_t                       v1sBy_t                  
+      v2sVon_p (##)                  v2sBy_p (##)             
+      v2sVon_t                       v2sBy_t                  
+      vVon_p_h (##)                  vBy_p_h (##)
+      vVon_p_s                       vBy_p_s                  
+      vVon_p_t                       vBy_p_t                  
+      vVon_p_x                       vBy_p_x                  
+      vVon_t_x                       vBy_t_x                  
+</pre>
+<p class="funktion">speed of sound</p>
+<pre>
+    function in SI units           function in BTU
+      w1sVon_p                       w1sBy_p                  
+      w1sVon_t                       w1sBy_t                  
+      w2sVon_p                       w2sBy_p                  
+      w2sVon_t                       w2sBy_t                  
+      wVon_p_h                       wBy_p_h                  
+      wVon_p_s                       wBy_p_s                  
+      wVon_p_t                       wBy_p_t                  
+      wVon_p_v                       wBy_p_v                  
+      wxVon_p_h                      wxBy_p_h                 
+</pre>
+<p class="funktion">steam content (return value only valid in the range 0<=x<=1   <0: subcooled >1 superheated)</p>
+<pre>
+    function in SI units           function in BTU
+      xVon_p_h (##)                  xBy_p_h (##)
+      xVon_p_s                       xBy_p_s                  
+      xVon_p_v                       xBy_p_v                  
+</pre>
+</body>
+</html>
