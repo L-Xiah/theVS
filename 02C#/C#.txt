@@ -1,4 +1,4 @@
-
+--
 调用winAPI
 http://blog.csdn.net/wanbinwb2012/article/details/11640541
 
@@ -7,7 +7,6 @@ http://blog.csdn.net/wanbinwb2012/article/details/11640541
 [非托管的用 DllImport 引入， Assembly是托管dll ]
 使用反射时，dll只能托管代码（C++也可以生成托管dll）
 非托管的使用[DllImport]引入
-
 
 托管dll和非托管dll
 
