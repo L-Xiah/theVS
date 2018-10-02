@@ -1,0 +1,9 @@
+
+
+//Git lfs 使用（大附件）//
+1> git lfs 安装（网上下载[git-lfs.exe]）
+2> 在git项目中Terminal运行：
+        a)git lfs install(首次使用)
+        b)git lfs track "*.pdf"(pdf文件)
+        c)git add .gitattributes(跟踪大文件)
+        d).....
