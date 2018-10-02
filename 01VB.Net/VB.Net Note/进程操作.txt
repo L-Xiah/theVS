@@ -1,0 +1,96 @@
+
+用OpenProcess、GetExitCodeProcess和TerminateProcess关闭进程  
+博客分类： VB
+ 
+ .
+
+
+如果需要结束其他进程的执行，可以使用TerminateProcess函数。
+
+BOOL TermintaeProcess(HANDLE hProcess,UINT uExitCode );
+
+hProcess是要结束的目标进程的句柄，uExitCode指定目标进程的退出代码，可以使用GetExitCodeProcess取得一个进程的退出代码。
+
+ 
+
+对于一个已经存在的进程，只能使用OpenProcess函数来取得这个进程的访问权限。
+
+HANDLE OpenProcess(DWORD dwDesiredAccess,BOOL bInheritHandle,DWORD dwProcessId );
+
+dwDesiredAccess参数指定了对该进程的访问权限，这些权限可以是：PROCESS_ALL_ACCESS即所有可进行的权限；PROCESS_QUERY_INFORMATION即查看该进程信息的权限；还有很多。bInheritHandle参数指定此函数返回的句柄是否可以被继承。dwProcessId参数指定了要打开进程的ID号，可以从任务管理器中找到它们，也可以使用ToolHelp函数获取。
+
+
+123
+1231212132112
+我用VB写的shellCmd类：
+
+
+
+Vb代码 复制代码 收藏代码
+1.Option Explicit  
+2.  
+3.Private Const PROCESS_ALL_ACCESS = &H1F0FFF  
+4.Private Const PROCESS_QUERY_INFORMATION = &H400  
+5.  
+6.Private Declare Function CloseHandle Lib "kernel32.dll" (ByVal hObject As Long) As Long  
+7.Private Declare Function OpenProcess Lib "kernel32.dll" (ByVal dwDesiredAccess As Long, ByVal bInheritHandle As Long, ByVal dwProcessId As Long) As Long  
+8.Private Declare Function GetExitCodeProcess Lib "kernel32.dll" (ByVal hProcess As Long, lpExitCode As Long) As Long  
+9.Private Declare Function TerminateProcess Lib "kernel32.dll" (ByVal hProcess As Long, ByVal uExitCode As Long) As Long  
+10.  
+11.Public Function CloseProcess(ByVal dwProcessId As Long) As Boolean  
+12.    Dim hProcess As Long  
+13.    Dim lpExitCode As Long  
+14.    hProcess = OpenProcess(PROCESS_ALL_ACCESS, False, dwProcessId)  
+15.    If hProcess = 0 Then  
+16.        CloseProcess = False  
+17.        Exit Function  
+18.    End If  
+19.    If GetExitCodeProcess(hProcess, lpExitCode) = 0 Then  
+20.        CloseProcess = False  
+21.        CloseHandle (hProcess)  
+22.        Exit Function  
+23.    End If  
+24.    If TerminateProcess(hProcess, lpExitCode) = 0 Then  
+25.        CloseProcess = False  
+26.    Else  
+27.        CloseProcess = True  
+28.    End If  
+29.    CloseHandle (hProcess)  
+30.End Function  
+31.  
+32.Public Function IsRunning(ByVal ProgramID) As Boolean  
+33.    Dim hProgram As Long  
+34.    hProgram = OpenProcess(PROCESS_QUERY_INFORMATION, False, ProgramID)  
+35.    If hProgram <> 0 Then  
+36.        IsRunning = True  
+37.    Else  
+38.        IsRunning = False  
+39.    End If  
+40.    CloseHandle hProgram  
+41.End Function  
+
+
+456456456456465
+45566
+
+我用VB写的调用这个类的函数：
+
+
+
+Vb代码 复制代码 收藏代码
+1.'shellCmd在ASP中调用CMD.EXE执行DOS下的EXE程序  
+2.'cmdStr为由CMD.exe及DOS下的EXE文件名路径名组成的字符串  
+3.'返回值为执行EXE所用的秒数  
+4.Public Function myShell(cmdStr) As Single  
+5.    Dim start, b, PID, ret, useTime, hProcess  
+6.    Set myshellclass = New shellCmd  
+7.    startTime = GetTickCount()  
+8.    useTime = 0  
+9.    PID = Shell(cmdStr, vbHide)     'vbNormalFocus显示窗口  
+10.    Do While myshellclass.IsRunning(PID) And useTime < 3000  
+11.        useTime = GetTickCount() - startTime  
+12.        DoEvents  
+13.    Loop  
+14.    Call myshellclass.CloseProcess(PID) '若该进程在运行则关闭它  
+15.    myShell = GetTickCount() - startTime  
+16.End Function  
