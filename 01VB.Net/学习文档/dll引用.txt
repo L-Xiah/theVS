@@ -1,0 +1,43 @@
+引用dll的路径问题
+上级目录不可以，但是为了保证程序路径改变，引用不会被破坏。可以有几个方法：
+1.将DLL文件放在程序同级目录
+2.将DLL文件放在程序子目录
+3.将DLL文件放在System32目录下（系统目录，可以直接引用DLL）
+4.可以将DLL文件打包成资源文件，融合到EXE程序中，每次执行判断同级目录是否有DLL文件，不存在，释放资源文件。
+
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+a，我的工程中要用到一个第三方的控件，在VS的IDE中添加了该控件后，VS自动在属性窗体
+的引用中添加了组件对应的dll引用。当前我必须将该dll引用属性的“复制本地”设置为“true”
+才能正常运行程序。
+    我现在想将该.Net私有程序集文件（即.dll文件）拷贝到"C:\WINDOWS\system32"中，
+在IDE中将“复制本地”属性设置为“false”，以便编译时不在“bin\Debug”目录中自动复制
+该dll文件，请问程序中应添加哪些代码，才能使程序使用正确的引用dll的路径。
+
+b，在工程中加了一个“App.config”文件，写入：
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <probing privatePath="dll"/>
+    </assemblyBinding>
+  </runtime>
+</configuration>
+
+在Debug目录下建了一个名为"dll"的子目录，将dll程序集拷到此目录中，
+将“复制本地”属性设置为“false”，可以正常运行程序。
+
+但是若改成
+      <probing privatePath="C:\\WINDOWS\\system32"/>
+或
+      <probing privatePath="file://localhost\\C:\\WINDOWS\\system32"/>
+在C:\WINDOWS\system32下也拷入了dll程序集，但运行出错，提示未能加载程序集，
+高手给看看应如何修改呀！
+
+c，因为是私有程序集 没有强名，所以不能安装到GAC中。
+我现在就是用的配置文件，但是用<probing privatePath="C:\WINDOWS\system32"/>也是运行出错，提示未能加载程序集。
+我看到网上有下面这样一句话：
+  “私有程序集部署有一个值得注意的局限，那就是它决不能部署到 ApplicationBase 目录的外部。您不能在两个或多个已部署到单独目录中的应用程序之间共享私有程序集。”
+不知是否就真是这样了？
+
+

@@ -1,0 +1,24 @@
+一、获取控件下属性，将其赋值或读取属性值
+''调用以下程序时应先在窗体上添加一个Name为"Text1"的Textbox控件。
+Private Sub CallByName001()
+        Dim obj As Object
+        obj = Me
+        obj = CallByName(obj, "Text1", vbGet)
+        obj = CallByName(obj, "Font", vbGet)
+        ''对象obj设置新字体
+        obj = New System.Drawing.Font("黑体", 20, System.Drawing.FontStyle.Regular,
+                                                   System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Debug.Print(obj.name)
+        Debug.Print(obj.size)
+        Me.Text1.Font = obj  ''Text1控件设置新字体（将对象赋予控件）
+        ''CallByName(obj, "Size", VbLet, 20)不能使用该语句赋值（Textbox控件的Font下的size是只读属性）
+        ' ''以上代码="Me.Text1.Font.Size = 20"
+
+        Dim V As String
+        obj = Me
+        obj = CallByName(obj, "Text1", VbGet)
+        obj = CallByName(obj, "Font", VbGet)
+        V = CallByName(obj, "Size", VbGet)
+        '以上代码="V = Me.Text1.Font.Size"
+        '' ''= =这样都可以用脚本控制控件了
+End Sub

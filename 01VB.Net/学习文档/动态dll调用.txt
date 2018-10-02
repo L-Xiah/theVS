@@ -1,0 +1,36 @@
+vb.net动态加载dll并执行dll中的某一个函数  
+引用：http://blog.163.com/shikang999@126/blog/static/17262489620114702319759/
+2011-05-07 00:33:49|  分类： VB.net2008或2010 |  标签：反射  动态  加载  dll   |举报|字号 订阅
+注意:下面的Dll文件必须是用托管代码写的,否则请使用API的相应函数进行动态加载。
+一、
+比如我事先写了一个类，如下：
+Public Class TestClass
+    Public Function Add(ByVal add1 As Integer, ByVal add2 As Integer) As Integer
+        Return add1 + add2
+    End Function
+End Class
+然后编译成了ClassDll.dll文件.
+二、
+在另一个程序中，我写入了如下代码
+Public Function Add(ByVal add1 As Integer, ByVal add2 As Integer) As Integer
+        Dim asm As System.Reflection.Assembly = System.Reflection.Assembly.LoadFile("ClassDll.dll")
+        Dim classtemp As Type = asm.GetType("ClassDll.dll.TestClass")//("ClassDll.TestClass")
+        Dim obj As Object = asm.CreateInstance(classtemp.FullName)
+        Dim me_Info As System.Reflection.MethodInfo = classtemp.GetMethod("Add")
+        Dim paramter(1) As Object
+        paramter(0) = add1
+        paramter(1) = add2
+        Return me_Info.Invoke(obj, paramter)
+    End Function
+执行上面的Add函数其功能和执行一中的Add函数是一样的。
+
+当然,执行上面的函数的另一种方法是:（之前我用上面的方法反射执行一个exe文件里的函数时,总是失败,但是按照下面的方法就可以成功执行,你要是遇到问题时,不妨按照下面的方法试一试）
+Public Function Add(ByVal add1 As Integer, ByVal add2 As Integer) As Integer
+        Dim asm As System.Reflection.Assembly = System.Reflection.Assembly.LoadFile("ClassDll.dll")
+        Dim classtemp As Type = asm.GetType("ClassDll.dll.TestClass")
+        Dim obj As Object = asm.CreateInstance(classtemp.FullName)
+        Return CallByName(obj, "Add", vbMethod,add1,add2)'这里特别注意CallByName的用法
+    End Function
+1、上面的 System.Reflection.Assembly.LoadFile("ClassDll.dll")这一句里的ClassDll.dll是我们编译的那个dll文件。如果其不是放在程序目录下，这里必须换成ClassDll.dll的绝对路径。
+2、Dim classtemp As Type = asm.GetType("ClassDll.dll.TestClass")这里的ClassDll.dll.TestClass类为什么不是我们定义的那个TestClass类呢（ClassDll.dll是我们的dll名称），你自己打开那个dll文件看一下就知道答案了。即我们用的时候类的前面必须加上我们的dll的名称再加一个点，才构成我们的类。
+3、paramter是我们函数要接收的参数。可以通过paramter来传递数据。

@@ -1,0 +1,51 @@
+'从文件指定位置读取数据
+dim fn as new io.filestream("e:\123.mp3", IO.FileMode.Open)
+dim fr as new io.binaryreader(fn)
+fr.BaseStream.Position = 1000         '从1000字节处开始读取文件
+dim data() as byte= fr.ReadBytes(2000)  '读取2000个字节至data()数组
+fr.close
+fn.close
+
+'在文件指定位置写入数据
+dim fn as new io.filestream("e:\123.mp3", IO.FileMode.Open)
+dim fr as new io.binarywriter(fn)
+fr.BaseStream.Position = 1000         '从1000字节处开始读取文件
+fr.write(data)  '将data数组写入文件
+fr.close
+fn.close
+
+'关键在于这句：fr.BaseStream.Position = 1000  ，即将文件流的指针移动到1000字节处，然后再根据自己的要求操作即可。
+
+
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+需要引入命名空间
+Imports System.IO
+    '二进制流 转文件
+    Public Function BinaryToFile(ByVal byTmp As Byte(), ByVal path As String) As Boolean
+        Dim fs As FileStream
+        Dim bwr As BinaryWriter
+        fs = New FileStream(path, FileMode.Create)
+        bwr = New BinaryWriter(fs)
+        bwr.Write(byTmp)
+        bwr.Flush()
+        bwr.Close()
+        fs.Close()
+        fs.Dispose()
+        Return True
+    End Function
+ 
+    '文件转二进制流,读取文件二进制流
+    Public Function FileToBinary(ByRef byTmp As Byte(), ByVal path As String) As Boolean
+        Dim fs As FileStream
+        Dim br As BinaryReader
+        fs = New FileStream(path, FileMode.Open, FileAccess.Read)
+        br = New BinaryReader(fs)
+        byTmp = br.ReadBytes(fs.Length)
+        br.Close()
+        fs.Close()
+        fs.Dispose()
+        Return True
+    End Function
+
+
