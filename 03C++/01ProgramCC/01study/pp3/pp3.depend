@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1210966336 source:d:\c++\pp3\main.cpp
+	<windows.h>
+	"resource.h"
+
+1189868558 d:\c++\pp3\resource.h
+	<windows.h>
+
+1210966336 source:d:\c++\pp3\resource.rc
+	"resource.h"
+

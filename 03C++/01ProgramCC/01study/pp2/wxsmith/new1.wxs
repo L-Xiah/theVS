@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="new1">
+		<size>228,176</size>
+		<pos_arg>1</pos_arg>
+		<size_arg>1</size_arg>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextCtrl1" member="yes">
+			<value>文本</value>
+			<pos>72,8</pos>
+			<size>400,232</size>
+			<handler function="OnTextCtrl1Text" entry="EVT_TEXT" />
+		</object>
+	</object>
+</wxsmith>

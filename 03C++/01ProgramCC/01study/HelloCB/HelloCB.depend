@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1189868556 source:d:\hellocb\main.cpp
+	<iostream>
+
+1338626737 source:d:\c++\hellocb\main.cpp
+	<iostream>
+	<stdio.h>
+
