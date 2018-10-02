@@ -1,0 +1,222 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="XH002" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6172.1$钢六角薄螺母</Value>
+    </Setting>
+    <Setting Name="XH003" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB11263$H型钢</Value>
+    </Setting>
+    <Setting Name="XH004" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB119.1$圆柱销</Value>
+    </Setting>
+    <Setting Name="XH005" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB12618$抽芯铆钉</Value>
+    </Setting>
+    <Setting Name="XH006" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB819.1$十字槽沉头螺钉</Value>
+    </Setting>
+    <Setting Name="XH007" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB861.1$锁紧垫圈</Value>
+    </Setting>
+    <Setting Name="XH008" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB902.1$焊接螺柱</Value>
+    </Setting>
+    <Setting Name="XH009" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HG20610$缠绕垫片</Value>
+    </Setting>
+    <Setting Name="XH010" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6175$钢六角螺母</Value>
+    </Setting>
+    <Setting Name="XH011" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB1096$平键</Value>
+    </Setting>
+    <Setting Name="XH012" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB2028$船用放泄螺塞</Value>
+    </Setting>
+    <Setting Name="XH013" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB3009$防蚀螺塞</Value>
+    </Setting>
+    <Setting Name="XH014" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB4622.2$缠绕垫片</Value>
+    </Setting>
+    <Setting Name="XH015" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5780$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH016" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5781$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH017" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5782$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH018" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5783$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH019" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5785$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH020" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB5786$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH021" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6170$钢六角螺母</Value>
+    </Setting>
+    <Setting Name="XH022" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6171$钢六角螺母</Value>
+    </Setting>
+    <Setting Name="XH023" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6175$钢六角螺母</Value>
+    </Setting>
+    <Setting Name="XH024" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB6184$锁紧螺母</Value>
+    </Setting>
+    <Setting Name="XH025" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB70.1$钢内六角圆柱头螺钉</Value>
+    </Setting>
+    <Setting Name="XH026" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB9115$法兰</Value>
+    </Setting>
+    <Setting Name="XH027" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB9119$法兰</Value>
+    </Setting>
+    <Setting Name="XH028" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB97.1$钢平垫圈</Value>
+    </Setting>
+    <Setting Name="XH029" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB97.2$钢平垫圈</Value>
+    </Setting>
+    <Setting Name="XH030" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB97.3$钢平垫圈</Value>
+    </Setting>
+    <Setting Name="XH031" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB100$开槽沉头木螺钉</Value>
+    </Setting>
+    <Setting Name="XH032" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB116$铆钉</Value>
+    </Setting>
+    <Setting Name="XH033" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB117$圆锥销</Value>
+    </Setting>
+    <Setting Name="XH034" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB575$船用铜法兰</Value>
+    </Setting>
+    <Setting Name="XH035" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB798$钢六角螺栓</Value>
+    </Setting>
+    <Setting Name="XH036" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB799$地脚螺栓</Value>
+    </Setting>
+    <Setting Name="XH037" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB812$圆螺母</Value>
+    </Setting>
+    <Setting Name="XH038" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB818$十字槽盘头螺钉</Value>
+    </Setting>
+    <Setting Name="XH039" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB822$十字槽圆柱头螺钉</Value>
+    </Setting>
+    <Setting Name="XH040" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB825$吊环螺钉</Value>
+    </Setting>
+    <Setting Name="XH041" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB827$标牌铆钉</Value>
+    </Setting>
+    <Setting Name="XH042" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB845$十字槽盘头自攻螺钉</Value>
+    </Setting>
+    <Setting Name="XH043" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB848$小垫圈</Value>
+    </Setting>
+    <Setting Name="XH044" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB852$工钢用方斜垫圈</Value>
+    </Setting>
+    <Setting Name="XH045" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB853$槽钢用方斜垫圈</Value>
+    </Setting>
+    <Setting Name="XH046" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB854$单耳止动垫圈</Value>
+    </Setting>
+    <Setting Name="XH047" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB858$圆螺母用止动垫圈</Value>
+    </Setting>
+    <Setting Name="XH048" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB866$沉头铆钉</Value>
+    </Setting>
+    <Setting Name="XH049" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB867$半圆头铆钉</Value>
+    </Setting>
+    <Setting Name="XH050" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB872$扁平头铆钉</Value>
+    </Setting>
+    <Setting Name="XH051" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB873$空心铆钉</Value>
+    </Setting>
+    <Setting Name="XH052" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB880$带孔销</Value>
+    </Setting>
+    <Setting Name="XH053" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB882$销轴</Value>
+    </Setting>
+    <Setting Name="XH054" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB897$双头螺柱</Value>
+    </Setting>
+    <Setting Name="XH055" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB898$双头螺柱</Value>
+    </Setting>
+    <Setting Name="XH056" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB900$双头螺柱</Value>
+    </Setting>
+    <Setting Name="XH057" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB901$等长双头螺柱</Value>
+    </Setting>
+    <Setting Name="XH058" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB953$等长双头螺柱</Value>
+    </Setting>
+    <Setting Name="XH059" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB41$钢六角螺母</Value>
+    </Setting>
+    <Setting Name="XH060" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB56$钢六角厚螺母</Value>
+    </Setting>
+    <Setting Name="XH061" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB65$钢开槽圆柱头螺钉</Value>
+    </Setting>
+    <Setting Name="XH062" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB67$钢开槽盘头螺钉</Value>
+    </Setting>
+    <Setting Name="XH063" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB68$钢开槽沉头螺钉</Value>
+    </Setting>
+    <Setting Name="XH064" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB71$钢开槽锥端紧定螺钉</Value>
+    </Setting>
+    <Setting Name="XH065" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB73$钢开槽平端紧定螺钉</Value>
+    </Setting>
+    <Setting Name="XH066" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB75$钢方头长圆柱端紧定螺钉</Value>
+    </Setting>
+    <Setting Name="XH067" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB85$螺钉</Value>
+    </Setting>
+    <Setting Name="XH068" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB91$开口销</Value>
+    </Setting>
+    <Setting Name="XH069" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB93$标准型弹簧垫圈</Value>
+    </Setting>
+    <Setting Name="XH070" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB95$钢平垫圈</Value>
+    </Setting>
+    <Setting Name="XH071" Type="System.String" Scope="User">
+      <Value Profile="(Default)">JB87$垫片</Value>
+    </Setting>
+    <Setting Name="XH072" Type="System.String" Scope="User">
+      <Value Profile="(Default)">JB88$垫片</Value>
+    </Setting>
+    <Setting Name="XH073" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GB4622.1$缠绕垫片</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
