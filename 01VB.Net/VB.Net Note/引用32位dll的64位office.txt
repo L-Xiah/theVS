@@ -1,0 +1,14 @@
+1、64位的office 使用的是Vba7.0以上（与以前版本有区别）
+64位的office无法使用32位的dll（暂时没有找到方法）。
+
+2、VS.net Framwork生成64位dll
+Project的编译平台使用x64（无x64可通过“菜单”--“生成”--“配置管理器”新建）；
+Project的“为COM互操作注册(E)”选项若选中，office中Vba可直接引用生成的dll；
+Project的“为COM互操作注册(E)”选项若不选中，需要使用Regasm注册（注册方法见3）。
+
+3、Regasm注册64位dll
+“cmd”使用命令提示符，输入“cd C:\Windows\Microsoft.NET\Framework64\v4.0.30319”；
+生成注册表脚本，输入“regasm **路径\a123.dll /regfile”（生成.reg文件）；
+注册类型和导出程序集和类型库，输入“Regasm **路径\a123.dll /tlb”（生成.tlb文件）；
+双击运行生成的.reg文件（在注册表中更新）；
+在office中Vba的引用文本框查找该64位dll。
