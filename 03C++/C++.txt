@@ -1,0 +1,60 @@
+
+
+<Title = "Windows消息：队列消息和非队列消息" >
+1：Windows系统对每一个应用程序有一个“消息队列”；
+	应用程序的WinMain()函数使用GetMessage()检索这些消息
+2：消息循环（WinMain()函数中）；
+	//队列消息
+	while(GetMessage(&msg,NULL,0,0))
+	{
+	TranslateMessage(&msg);
+	DispatchMessage(&msg);
+	}
+3：窗口消息处理程序（WndProc()函数）
+	非队列消息，由Windows系统直接发送到WndProc()函数中；
+	来源由以下几种：
+	a)DispatchMessage(&msg)发给Windows系统，Windows系统转发过来；
+	b)使用特定的Windows函数(eg,CreateWindow、ShowWindow、UpdateWindow)；
+	c)其它（eg,窗口获得焦点等事件）.
+
+（参考：http://www.cnblogs.com/qinfengxiaoyue/archive/2013/02/12/2910614.html）
+（参考：http://www.cppblog.com/mzty/archive/2006/11/24/15619.html）
+</Title>
+
+
+
+<Title =" 一、MFC的实现过程" >
+MFC的实现过程
+1：本程序实例对象 theApp
+	CMFCApplication1App theApp;// 唯一的一个 CMFCApplication1App 对象
+	CMFCApplication1App::CMFCApplication1App()// CMFCApplication1App 构造
+2：主函数入口
+	_tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,_In_ LPTSTR lpCmdLine, int nCmdShow) //（appmodul.cpp中）
+	int AFXAPI AfxWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,_In_ LPTSTR lpCmdLine, int nCmdShow) //（实际入口函数，在winmain.cpp中）
+3：theApp的实例化
+	BOOL CMFCApplication1App::InitInstance() // CMFCApplication1App 初始化
+
+4：注册文档模板
+	//（在CMFCApplication1App::InitInstance()函数中）
+	// 注册应用程序的文档模板。文档模板
+	// 将用作文档、框架窗口和视图之间的连接
+	CMultiDocTemplate* pDocTemplate;
+	pDocTemplate = new CMultiDocTemplate(IDR_MFCApplication1TYPE,
+		RUNTIME_CLASS(CMFCApplication1Doc),
+		RUNTIME_CLASS(CChildFrame), // 自定义 MDI 子框架
+		RUNTIME_CLASS(CMFCApplication1View));
+	if (!pDocTemplate)
+		return FALSE;
+	AddDocTemplate(pDocTemplate);
+5：创建框架窗口
+	//（在CMFCApplication1App::InitInstance()函数中）
+	// 创建主 MDI 框架窗口
+	CMainFrame* pMainFrame = new CMainFrame;
+	//BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)  调用窗口注册
+	//窗口注册会调用函数BOOL AFXAPI AfxEndDeferRegisterClass(LONG fToRegister)在文件WINCORE.CPP中
+6：执行消息响应
+	//消息响应是通过  AfxWinMain中nReturnCode = pThread->Run()实现的
+	//用一个dowhile循环实现消息循环    PumpMessage()
+
+（参考：http://blog.csdn.net/xingkongtianyuzhao/article/details/47985367）
+</Title>
